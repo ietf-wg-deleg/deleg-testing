@@ -60,3 +60,32 @@ The testable zones are shown [here](akamai-testing-layout.png).
 
 Comments on this test setup should be sent to [Ralf Weber](mailto:dns@fl1ger.de).
 
+## Knot
+
+A set of tests running against the `knotd` authoritative server is available under "test-k.deleg.top".
+It has been verified with Akamai's DELEG-enabled test resolver and a forthcoming DELEG-enabled resolver from ICANN.
+The software that created this testbed is also forthcoming from ICANN. 
+
+If you have a DELEG-enabled resolver, you can try each of the following, looking for the expected value in the answer.
+
+For example, sending a query for TXT records ns-and-server-name.test-k.deleg.top with a current resolver will give you:
+
+    ns-and-server-name.test-k.deleg.top. TXT 30 "43002"
+    ns-and-server-name.test-k.deleg.top. TXT 30 "Not DELEG-enabled for ns-and-server-name.test-k.deleg.top, from ns1"
+
+The same query with a DELEG-enabled resolver will give you:
+
+    ns-and-server-name.test-k.deleg.top. TXT 30 "93120"
+    ns-and-server-name.test-k.deleg.top. TXT 30 "DELEG-enabled for ns-and-server-name.test-k.deleg.top gotten by server-name, from ns2"
+
+The current set of tests are:
+~~~
+Found expected result, 17532, for txt-test.test-k.deleg.top txt
+Found expected result, 62358, for just-ns.test-k.deleg.top txt +de
+Found expected result, 43002, for ns-and-server-name.test-k.deleg.top txt
+Found expected result, 93120, for ns-and-server-name.test-k.deleg.top txt +de
+Found expected result, 12773, for ns-and-server-ipv4.test-k.deleg.top txt
+Found expected result, 53911, for ns-and-server-ipv4.test-k.deleg.top txt +de
+Found expected result, 44992, for ns-and-include-delegparam.test-k.deleg.top txt
+Found expected result, 04723, for ns-and-include-delegparam.test-k.deleg.top txt +de
+~~~
