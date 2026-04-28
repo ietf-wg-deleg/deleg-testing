@@ -89,3 +89,21 @@ Found expected result, 53911, for ns-and-server-ipv4.test-k.deleg.top txt +de
 Found expected result, 44992, for ns-and-include-delegparam.test-k.deleg.top txt
 Found expected result, 04723, for ns-and-include-delegparam.test-k.deleg.top txt +de
 ~~~
+
+## CZ.NIC
+
+Similarly to "zone[1-8].deleg.rwdns.de.", CZ.NIC provides bunch of testing zones
+delegated various ways with or without DELEG, NS and DS records. The zones are
+powered by DELEG-aware authoritative servers (Knot DNS built from the development
+branch):
+
+    ns.d.xdp.cz.
+    ns-ds.d.xdp.cz.
+    deleg.d.xdp.cz.
+    deleg-ds.d.xdp.cz.
+    deleg-ns-ds.d.xdp.cz.
+
+The tricky part is that some nameservers (`dns1.d.xdp.cz.`) serve only the parent
+zone (`d.xdp.cz.`), some (`dns3.d.xdp.cz.`) only the subzones (listed above), and
+some (`dns4.d.xdp.cz.`) all of them at once (demonstrating the specific behavior
+of DELEG parent-side-ness).
