@@ -8,21 +8,20 @@ It also has pointers to testing resources.
 The `knotd` authoritative server and `kdig` DNS client in this
 [experimental branch](https://gitlab.nic.cz/knot/knot-dns/-/tree/deleg_experimental)
 are DELEG-enabled.
-
-Last checked 2026-04-22
+Last checked 2026-05-05.
 
 ## BIND9
 
 The `named` authoritative server and resolver, and `dig` DNS client in this
 [experimental branch](https://gitlab.isc.org/isc-projects/bind9/-/tree/each-deleg-auth)
 are DELEG-enabled.
-
-Last checked 2026-04-22
+Last checked 2026-05-05.
 
 ## dnspython
 
 The dnspython library has DELEG support in this
 [experimental branch](https://github.com/rthalley/dnspython/tree/deleg).
+Last checked 2026-05-05.
 
 # Proprietary software
 
@@ -60,13 +59,13 @@ The testable zones are shown [here](akamai-testing-layout.png).
 
 Comments on this test setup should be sent to [Ralf Weber](mailto:dns@fl1ger.de).
 
-## Knot
+## Knot and BIND9
 
-A set of tests running against the `knotd` authoritative server is available under "test-knot.deleg.top".
+A set of tests running against the `knotd` and `named` authoritative servers is available under "test-knot.deleg.top" and "test-bind.deleg.top", respectively.
 It has been verified with Akamai's DELEG-enabled test resolver and a forthcoming DELEG-enabled resolver from ICANN.
-The software that created this testbed is also forthcoming from ICANN. 
+The software that created this testbed is available from the ICANN [deleg-testbed-setup repo](https://github.com/icann/deleg-testbed-setup)
 
-If you have a DELEG-enabled resolver, you can try each of the following, looking for the expected value in the answer.
+If you have a DELEG-enabled resolver, you can try each of the following, looking for the expected value in the answer in the "zones-data.txt" file in the repo.
 
 For example, sending a query for TXT records ns-and-server-name.test-knot.deleg.top with a current resolver will give you:
 
@@ -80,14 +79,22 @@ The same query with a DELEG-enabled resolver will give you:
 
 The current set of tests are:
 ~~~
-Found expected result, 17532, for txt-test.test-knot.deleg.top txt
-Found expected result, 62358, for just-ns.test-knot.deleg.top txt +de
-Found expected result, 43002, for ns-and-server-name.test-knot.deleg.top txt
-Found expected result, 93120, for ns-and-server-name.test-knot.deleg.top txt +de
-Found expected result, 12773, for ns-and-server-ipv4.test-knot.deleg.top txt
-Found expected result, 53911, for ns-and-server-ipv4.test-knot.deleg.top txt +de
-Found expected result, 44992, for ns-and-include-delegparam.test-knot.deleg.top txt
-Found expected result, 04723, for ns-and-include-delegparam.test-knot.deleg.top txt +de
+txt-test.test-knot.deleg.top txt
+just-ns.test-knot.deleg.top txt +de
+ns-and-server-name.test-knot.deleg.top txt
+ns-and-server-name.test-knot.deleg.top txt +de
+ns-and-server-ipv4.test-knot.deleg.top txt
+ns-and-server-ipv4.test-knot.deleg.top txt +de
+ns-and-include-delegparam.test-knot.deleg.top txt
+ns-and-include-delegparam.test-knot.deleg.top txt +de
+txt-test.test-bind.deleg.top txt
+just-ns.test-bind.deleg.top txt +de
+ns-and-server-name.test-bind.deleg.top txt
+ns-and-server-name.test-bind.deleg.top txt +de
+ns-and-server-ipv4.test-bind.deleg.top txt
+ns-and-server-ipv4.test-bind.deleg.top txt +de
+ns-and-include-delegparam.test-bind.deleg.top txt
+ns-and-include-delegparam.test-bind.deleg.top txt +de
 ~~~
 
 ## CZ.NIC
