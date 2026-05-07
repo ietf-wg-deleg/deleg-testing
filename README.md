@@ -5,10 +5,10 @@ It also has pointers to testing resources.
 
 ## Knot
 
-The `knotd` authoritative server and `kdig` DNS client in this
-[experimental branch](https://gitlab.nic.cz/knot/knot-dns/-/tree/deleg_experimental)
+The `knotd` authoritative server and `kdig` DNS client
+in the [main branch of](https://gitlab.nic.cz/knot/knot-dns/)
 are DELEG-enabled.
-Last checked 2026-05-05.
+Last checked 2026-05-07.
 
 ## BIND9
 
